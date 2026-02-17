@@ -16,7 +16,6 @@ It performs the following:
 - Identifies words repeated more than twice across translated titles.
 - Executes locally and across **five parallel browser/device configurations on BrowserStack**.
 
-The implementation is intentionally straightforward and readable, reflecting practical automation patterns suitable for a **Customer Engineer / Associate Automation role**.
 
 ---
 
@@ -45,7 +44,7 @@ Add the following values:
 # RapidAPI Translation
 RAPIDAPI_KEY=your_rapidapi_key_here
 RAPIDAPI_HOST=google-translate113.p.rapidapi.com
-TRANSLATE_API_URL=https://google-translate113.p.rapidapi.com/api/v1/translator/json
+TRANSLATE_API_URL=https://google-translate113.p.rapidapi.com/api/v1/translator/text
 
 # BrowserStack Credentials
 BROWSERSTACK_USERNAME=your_browserstack_username
@@ -232,21 +231,6 @@ Repeated word analysis uses:
 
 This keeps the solution readable while fulfilling the assignment requirement.
 
----
-
-## Non-Obvious Technologies & Libraries
-
-These libraries are commonly used in professional automation workflows:
-
-| Library | Purpose | Link |
-|----------|----------|------|
-| Selenium 4 | Browser automation framework | https://pypi.org/project/selenium/ |
-| Requests | HTTP client for API calls | https://requests.readthedocs.io |
-| python-dotenv | Environment variable management | https://pypi.org/project/python-dotenv/ |
-| WebDriver Manager | Automatic driver management | https://pypi.org/project/webdriver-manager/ |
-| BrowserStack Automate | Cloud cross-browser testing | https://www.browserstack.com/automate |
-
----
 
 ## Project Structure
 
@@ -295,32 +279,3 @@ This demonstrates:
 
 ---
 
-## Design Philosophy
-
-The code prioritizes:
-
-- Readability over abstraction
-- Clear separation of concerns
-- Explicit waits for stability
-- Minimal hidden complexity
-- Environment-based credential management
-
-It is intentionally not over-engineered, making it easy to explain during technical discussions.
-
----
-
-## Why This Matters for a Customer Engineer Role
-
-This implementation demonstrates:
-
-- Real-world Selenium experience
-- Remote cloud execution
-- Cross-browser troubleshooting awareness
-- API integration skills
-- Handling dynamic web content
-- Debugging remote execution differences
-- Writing automation that is explainable and maintainable
-
-It reflects practical automation engineering aligned with BrowserStack’s ecosystem.
-
----
