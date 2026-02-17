@@ -1,4 +1,4 @@
-# El País Opinion Scraper – Selenium + BrowserStack
+# Technical Assignment: Run Selenium Test on BrowserStack
 
 ## Overview
 
@@ -278,4 +278,5 @@ This demonstrates:
 - Mobile + desktop parity validation
 
 ---
+
 
