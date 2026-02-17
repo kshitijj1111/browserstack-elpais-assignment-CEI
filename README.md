@@ -1,21 +1,4 @@
-# Technical Assignment: Run Selenium Test on BrowserStack
-
-## Overview
-
-This project implements a cross-browser automation workflow using **Selenium 4 (Python)** and **BrowserStack Automate**.
-
-It performs the following:
-
-- Navigates to **El País (Spanish edition)**.
-- Scrapes the first five articles from the **Opinión** section.
-- Extracts and prints:
-  - Title (Spanish)
-  - Full article content (Spanish)
-  - Cover image (downloaded locally when available)
-- Translates article titles to English using a **RapidAPI translation endpoint**.
-- Identifies words repeated more than twice across translated titles.
-- Executes locally and across **five parallel browser/device configurations on BrowserStack**.
-
+# Technical Assignment 1: Run Selenium Test on BrowserStack
 
 ---
 
@@ -25,16 +8,7 @@ This section explains how to configure and run the project locally and on Browse
 
 ---
 
-### 1. Prerequisites
-
-- Python 3.9+
-- Google Chrome (for local execution)
-- A RapidAPI account (for translation API)
-- A BrowserStack Automate account
-
----
-
-### 2. Configure Environment Variables
+### 1. Configure Environment Variables
 
 Create a file named `.env` in the root directory of the project.
 
@@ -60,7 +34,7 @@ Note: Do not commit `.env` to version control.
 
 ---
 
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 Create and activate a virtual environment:
 
@@ -86,7 +60,7 @@ pip install -r requirements.txt
 
 ---
 
-### 4. Run Locally
+### 3. Run Locally
 
 To verify functionality on your local machine:
 
@@ -104,7 +78,7 @@ This will:
 
 ---
 
-### 5. Run on BrowserStack (Parallel Execution)
+### 4. Run on BrowserStack (Parallel Execution)
 
 To execute across five parallel browser/device configurations:
 
@@ -118,7 +92,7 @@ BrowserStack → Automate Dashboard
 
 ---
 
-### 6. Troubleshooting
+### 5. Troubleshooting
 
 If you encounter:
 
@@ -231,34 +205,6 @@ Repeated word analysis uses:
 
 This keeps the solution readable while fulfilling the assignment requirement.
 
-
-## Project Structure
-
-```bash
-/
-├── main.py
-├── requirements.txt
-├── README.md
-├── .env
-├── outputs/
-│   └── images/
-└── venv/
-```
-
-### Directory Notes
-
-- `main.py`  
-  Core automation logic, scraping workflow, translation integration, and parallel execution.
-
-- `outputs/images/`  
-  Stores downloaded article cover images.
-
-- `.env`  
-  Contains API credentials (not committed).
-
-- `venv/`  
-  Python virtual environment for dependency isolation.
-
 ---
 
 ## Cross-Browser Coverage
@@ -278,5 +224,6 @@ This demonstrates:
 - Mobile + desktop parity validation
 
 ---
+
 
 
