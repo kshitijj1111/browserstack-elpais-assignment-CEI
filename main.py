@@ -396,34 +396,49 @@ def run_once(mode: str, capabilities: Optional[Dict] = None) -> List[Article]:
             assert capabilities is not None
             driver = build_browserstack_driver(capabilities)
 
-        articles = scrape_opinion_articles(driver)
+        try:
+            articles = scrape_opinion_articles(driver)
 
-        # Translate headers
-        for a in articles:
-            a.title_en = translate_title_to_english(a.title_es)
+            # Translate headers
+            for a in articles:
+                a.title_en = translate_title_to_english(a.title_es)
 
-        # Print outputs (as required)
-        print_articles_spanish(articles)
-        print_translations(articles)
+            # Print outputs
+            print_articles_spanish(articles)
+            print_translations(articles)
 
-        repeated = find_repeated_words_over_two([a.title_en or "" for a in articles])
-        print("\n====================")
-        print("REPEATED WORDS (> 2 times) ACROSS TRANSLATED HEADERS")
-        print("====================\n")
-        if not repeated:
-            print("[No words repeated more than twice]")
-        else:
-            for w, c in repeated:
-                print(f"{w}: {c}")
+            repeated = find_repeated_words_over_two([a.title_en or "" for a in articles])
+            print("\n====================")
+            print("REPEATED WORDS (> 2 times) ACROSS TRANSLATED HEADERS")
+            print("====================\n")
 
-        return articles
+            if not repeated:
+                print("[No words repeated more than twice]")
+            else:
+                for w, c in repeated:
+                    print(f"{w}: {c}")
+
+            
+            if mode == "browserstack":
+                driver.execute_script(
+                    'browserstack_executor: {"action": "setSessionStatus", '
+                    '"arguments": {"status":"passed","reason": "All steps executed successfully"}}'
+                )
+
+            return articles
+
+        except Exception as e:
+            
+            if mode == "browserstack" and driver:
+                driver.execute_script(
+                    f'browserstack_executor: {{"action": "setSessionStatus", '
+                    f'"arguments": {{"status":"failed","reason": "{str(e)}"}}}}'
+                )
+            raise
 
     finally:
         if driver:
-            try:
-                driver.quit()
-            except Exception:
-                pass
+            driver.quit()
 
 
 def get_5_browserstack_capabilities() -> List[Dict]:
